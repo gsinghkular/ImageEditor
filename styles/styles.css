@@ -1,3 +1,7 @@
+#file-upload-container {
+    margin: 40px 0;
+}
+
 .custom-file {
     border: 1px solid #000;
 }
@@ -9,7 +13,17 @@
 
 #img-canvas {
     margin: auto;
-    height: 50vh;
+    max-height: 50vh;
+    width: auto;
     max-width: 100%;
     background: gray;
+}
+
+
+#bottom-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background: rgb(247, 244, 244);
 }

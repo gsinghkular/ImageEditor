@@ -39,6 +39,8 @@ uploadImg.addEventListener('change', e => {
 // Effects
 let currBrightness = 0;
 let currContrast = 0;
+let currVibrance = 0;
+let currSaturation = 0;
 
 function adjustBrightness(brightnessSlider) {
     var newBrightness = brightnessSlider.value;
@@ -56,4 +58,22 @@ function adjustContrast(contrastSlider) {
         this.contrast(toApply).render();
     });
     currContrast = newContrast;
+}
+
+function adjustVibrance(vibranceSlider) {
+    var newVibrance = vibranceSlider.value;
+    var toApply = newVibrance - currVibrance;
+    Caman(canvas, function() {
+        this.vibrance(toApply).render();
+    });
+    currVibrance = newVibrance;
+}
+
+function adjustSaturation(saturationSlider) {
+    var newSaturation = saturationSlider.value;
+    var toApply = newSaturation - currSaturation;
+    Caman(canvas, function() {
+        this.saturation(toApply).render();
+    });
+    currSaturation = newSaturation;
 }

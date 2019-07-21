@@ -7,44 +7,53 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Image Editor</title>
     <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-info mb-3">
+    <nav class="navbar">
         <div class="container">
-            <a href="#" class="navbar-brand">Image Editor</a>
+            <a href="#">Image Editor</a>
         </div>
     </nav>
     <div class="container">
-        <div class="custom-file mb-3">
-            <input type="file" class="custom-file-input" id="upload-img">
-            <label for="upload-img" class="custom-file-label">Upload Image</label>
+        <div id="file-upload-container">
+            <input type="file" id="upload-img">
+            <label for="upload-img">Upload Image</label>
         </div>
-        <div id="canvas-container"> 
-            <canvas class="mb-3" id="img-canvas" data-caman-hidpi-disabled="true">
-            
+        <div id="canvas-container">
+            <canvas id="img-canvas" data-caman-hidpi-disabled="true">
+
             </canvas>
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <input type="range" id="brightness" min="-20" max="20" step="1" onchange="adjustBrightness(this)">
-            </div>
-            <div class="col-md-6">
-                <input type="range" id="contrast" min="-20" max="20" step="1" onchange="adjustContrast(this)">
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <button class="btn btn-primary btn-block" id="download-btn">Download</button>
-            </div>
-            <div class="col-md-6">
-                <button class="btn btn-primary btn-block" id="reset-btn">Reset</button>
+    </div>
+    <div id="bottom-container">
+        <div class="container">
+            <div class="row">
+                <div class="col m4 s12">
+                    <p class="range-field">
+                        <input type="range" id="brightness" min="-30" max="30" step="1" onchange="adjustBrightness(this)">
+                        <label for="brightness">Brightness</label>
+                    </p>
+                </div>
+                <div class="col m4 s12">
+                    <p class="range-field">
+                        <input type="range" id="contrast" min="-30" max="30" step="1" onchange="adjustContrast(this)">
+                        <label for="brightness">Contrast</label>
+                    </p>
+                </div>
+                <div class="col m4 s12">
+                    <p class="range-field">
+                        <input type="range" id="saturation" min="-30" max="30" step="1" onchange="adjustSaturation(this)">
+                        <label for="saturation">Saturation</label>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="scripts/caman.full.min.js"></script>
     <script src="scripts/main.js"></script>
 </body>
