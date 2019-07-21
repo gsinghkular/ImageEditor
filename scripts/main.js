@@ -16,7 +16,7 @@ uploadImg.addEventListener('change', e => {
     // Init file reader
     const reader = new FileReader();
 
-    if(file) {
+    if (file) {
         fileName = file.name;
         reader.readAsDataURL(file);
     }
@@ -26,7 +26,7 @@ uploadImg.addEventListener('change', e => {
         img = new Image();
         img.src = reader.result;
         // On image load, add to canvas
-        img.onload = function() {
+        img.onload = function () {
             canvas.width = img.width;
             canvas.height = img.height;
             ctx.drawImage(img, 0, 0, img.width, img.height);
@@ -42,38 +42,86 @@ let currContrast = 0;
 let currVibrance = 0;
 let currSaturation = 0;
 
-function adjustBrightness(brightnessSlider) {
+let brightnessSlider = document.getElementById("brightness");
+let contrastSlider = document.getElementById("contrast");
+let saturationSlider = document.getElementById("saturation");
+
+brightnessSlider.addEventListener("change", () => {
     var newBrightness = brightnessSlider.value;
     var toApply = newBrightness - currBrightness;
-    Caman(canvas, function() {
+    Caman(canvas, function () {
         this.brightness(toApply).render();
     });
     currBrightness = newBrightness;
-}
+})
 
-function adjustContrast(contrastSlider) {
+contrastSlider.addEventListener("change", () => {
     var newContrast = contrastSlider.value;
     var toApply = newContrast - currContrast;
-    Caman(canvas, function() {
+    Caman(canvas, function () {
         this.contrast(toApply).render();
     });
     currContrast = newContrast;
-}
+})
 
-function adjustVibrance(vibranceSlider) {
-    var newVibrance = vibranceSlider.value;
-    var toApply = newVibrance - currVibrance;
-    Caman(canvas, function() {
-        this.vibrance(toApply).render();
-    });
-    currVibrance = newVibrance;
-}
-
-function adjustSaturation(saturationSlider) {
+saturationSlider.addEventListener("change", () => {
     var newSaturation = saturationSlider.value;
     var toApply = newSaturation - currSaturation;
-    Caman(canvas, function() {
+    Caman(canvas, function () {
         this.saturation(toApply).render();
     });
     currSaturation = newSaturation;
+})
+
+
+// Filters
+document.getElementById("filters").addEventListener("click", (e) => {
+    switch (event.target.id) {
+        case "vintage":
+            reset();
+            Caman(canvas, function () {
+                this.vintage().render();
+            });
+            break;
+        case "lomo":
+            reset();
+            Caman(canvas, function () {
+                this.revert();
+                this.lomo().render();
+            });
+            break;
+        case "clarity":
+            reset();
+            Caman(canvas, function () {
+                this.revert();
+                this.clarity().render();
+            });
+            break;
+        case "nostalgia":
+            reset();
+            Caman(canvas, function () {
+                this.revert();
+                this.nostalgia().render();
+            });
+            break;
+    }
+})
+
+function reset() {
+    brightnessSlider.value = 0;
+    contrastSlider.value = 0;
+    saturationSlider.value = 0;
+    Caman(canvas, function () {
+        this.revert();
+    });
+}
+
+
+// Cropping stuff
+function drawRectangle() {
+    var width = canvas.width - 2;
+    var height = canvas.height - 2;
+    ctx.beginPath();
+    ctx.rect(1, 1, width, height);
+    ctx.stroke();
 }

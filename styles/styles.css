@@ -27,3 +27,7 @@
     text-align: center;
     background: rgb(247, 244, 244);
 }
+
+#filters div {
+    border: 1px solid;
+}
