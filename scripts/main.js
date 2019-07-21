@@ -86,26 +86,23 @@ document.getElementById("filters").addEventListener("click", (e) => {
         case "lomo":
             reset();
             Caman(canvas, function () {
-                this.revert();
                 this.lomo().render();
             });
             break;
         case "clarity":
             reset();
             Caman(canvas, function () {
-                this.revert();
                 this.clarity().render();
             });
             break;
         case "nostalgia":
             reset();
             Caman(canvas, function () {
-                this.revert();
                 this.nostalgia().render();
             });
             break;
     }
-})
+});
 
 function reset() {
     brightnessSlider.value = 0;
@@ -117,11 +114,31 @@ function reset() {
 }
 
 
-// Cropping stuff
-function drawRectangle() {
-    var width = canvas.width - 2;
-    var height = canvas.height - 2;
-    ctx.beginPath();
-    ctx.rect(1, 1, width, height);
-    ctx.stroke();
+// Adjustments stuff
+document.getElementById("adjustments").addEventListener("click", (e) => {
+    switch (event.target.id) {
+        case "rotate":
+            Caman(canvas, function () {
+                this.rotate(90).render();
+            });
+            break;
+        case "flip-horizontal":
+            Caman(canvas, function () {
+                this.flipHorizontal().render();
+            });
+            break;
+        case "flip-vertical":
+            Caman(canvas, function () {
+                this.flipVertical().render();
+            });
+            break;
+    }
+});
+
+
+// add text
+
+function addText() {
+    ctx.font = "40pt Calibri";
+    ctx.fillText("My TEXT!", canvas.height / 2, canvas.width/2, canvas.width);
 }
