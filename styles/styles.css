@@ -1,0 +1,15 @@
+.custom-file {
+    border: 1px solid #000;
+}
+
+#canvas-container {
+    margin: auto;
+    text-align: center;
+}
+
+#img-canvas {
+    margin: auto;
+    height: 50vh;
+    max-width: 100%;
+    background: gray;
+}
