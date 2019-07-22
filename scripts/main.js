@@ -75,7 +75,7 @@ saturationSlider.addEventListener("change", () => {
 
 
 // Filters
-document.getElementById("filters").addEventListener("click", (e) => {
+document.getElementById("option-filters").addEventListener("click", (e) => {
     switch (event.target.id) {
         case "vintage":
             reset();
@@ -115,7 +115,7 @@ function reset() {
 
 
 // Adjustments stuff
-document.getElementById("adjustments").addEventListener("click", (e) => {
+document.getElementById("option-adjustments").addEventListener("click", (e) => {
     switch (event.target.id) {
         case "rotate":
             Caman(canvas, function () {
@@ -135,9 +135,33 @@ document.getElementById("adjustments").addEventListener("click", (e) => {
     }
 });
 
+// bottom nav 
+let optionColors = document.getElementById("option-colors");
+let optionFilters = document.getElementById("option-filters");
+let optionAdjustments = document.getElementById("option-adjustments");
+
+document.getElementById("option-menu").addEventListener("click", (e) => {
+    hideAll();
+    switch (event.target.id) {
+        case "menu-adjust":
+            optionAdjustments.classList.add("show");
+            break;
+        case "menu-colors":
+            optionColors.classList.add("show");
+            break;
+        case "menu-filter":
+            optionFilters.classList.add("show");
+            break;
+    }
+});
+
+function hideAll() {
+    optionColors.classList.remove("show");
+    optionFilters.classList.remove("show");
+    optionAdjustments.classList.remove("show");
+}
 
 // add text
-
 function addText() {
     ctx.font = "40pt Calibri";
     ctx.fillText("My TEXT!", canvas.height / 2, canvas.width/2, canvas.width);

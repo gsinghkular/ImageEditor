@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Image Editor</title>
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet/less" type="text/css" href="styles/styles.less" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 
@@ -28,49 +29,64 @@
         </div>
     </div>
     <div id="bottom-container">
-        <div class="container">
-            <div class="row" id="colors">
-                <div class="col m4 s12">
-                    <p class="range-field">
-                        <input type="range" id="brightness" min="-30" max="30" step="1">
-                        <label for="brightness">Brightness</label>
-                    </p>
+        <div id="options">
+            <div class="container">
+                <div class="row" id="option-colors">
+                    <div class="col m4 s12">
+                        <p class="range-field">
+                            <input type="range" id="brightness" min="-30" max="30" step="1">
+                            <label for="brightness">Brightness</label>
+                        </p>
+                    </div>
+                    <div class="col m4 s12">
+                        <p class="range-field">
+                            <input type="range" id="contrast" min="-30" max="30" step="1">
+                            <label for="brightness">Contrast</label>
+                        </p>
+                    </div>
+                    <div class="col m4 s12">
+                        <p class="range-field">
+                            <input type="range" id="saturation" min="-30" max="30" step="1">
+                            <label for="saturation">Saturation</label>
+                        </p>
+                    </div>
                 </div>
-                <div class="col m4 s12">
-                    <p class="range-field">
-                        <input type="range" id="contrast" min="-30" max="30" step="1">
-                        <label for="brightness">Contrast</label>
-                    </p>
+                <div class="row" id="option-filters">
+                    <div class="col s3" id="vintage">Vintage</div>
+                    <div class="col s3" id="lomo">Lomo</div>
+                    <div class="col s3" id="clarity">Clarity</div>
+                    <div class="col s3" id="nostalgia">Nostalgia</div>
                 </div>
-                <div class="col m4 s12">
-                    <p class="range-field">
-                        <input type="range" id="saturation" min="-30" max="30" step="1">
-                        <label for="saturation">Saturation</label>
-                    </p>
+                <div class="row" id="option-adjustments">
+                    <div class="col s4" id="rotate">Rotate</div>
+                    <div class="col s4" id="flip-horizontal">Flip Horizontal</div>
+                    <div class="col s4" id="flip-vertical">Flip Vertical</div>
                 </div>
             </div>
-            <div class="row" id="filters">
-                <div class="col s3" id="vintage">Vintage</div>
-                <div class="col s3" id="lomo">Lomo</div>
-                <div class="col s3" id="clarity">Clarity</div>
-                <div class="col s3" id="nostalgia">Nostalgia</div>
-            </div>
-            <div class="row" id="adjustments">
-                <div class="col s4" id="rotate">Rotate</div>
-                <div class="col s4" id="flip-horizontal">Flip Horizontal</div>
-                <div class="col s4" id="flip-vertical">Flip Vertical</div>
-            </div>
-            <div class="row" id="options">
-                <div class="col s3">Adjust</div>
-                <div class="col s3" onclick="addText()">Text</div>
-                <div class="col s3">Filter</div>
-                <div class="col s3">Colors</div>
+        </div>
+        <div id="option-menu">
+            <div class="container">
+                <div class="row">
+                    <div class="col s3 valign-wrapper" id="menu-adjust">
+                        Adjust
+                    </div>
+                    <div class="col s3 valign-wrapper" id="menu-text">
+                        Text
+                    </div>
+                    <div class="col s3 valign-wrapper" id="menu-filter">
+                        Filter
+                    </div>
+                    <div class="col s3 valign-wrapper" id="menu-colors">
+                        Colors
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="scripts/caman.full.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
     <script src="scripts/main.js"></script>
 </body>
 
