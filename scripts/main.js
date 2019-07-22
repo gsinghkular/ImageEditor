@@ -161,8 +161,15 @@ function hideAll() {
     optionAdjustments.classList.remove("show");
 }
 
-// add text
-function addText() {
-    ctx.font = "40pt Calibri";
-    ctx.fillText("My TEXT!", canvas.height / 2, canvas.width/2, canvas.width);
-}
+
+// download
+document.getElementById("download").addEventListener('click', () => {
+    let e;
+    const link = document.createElement('a');
+
+    link.download = fileName;
+    link.href = canvas.toDataURL('image/jpeg', 1);
+
+    e = new MouseEvent('click');
+    link.dispatchEvent(e);
+})
