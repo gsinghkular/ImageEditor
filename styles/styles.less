@@ -1,0 +1,63 @@
+#file-upload-container {
+    margin: 40px 0;
+}
+
+.custom-file {
+    border: 1px solid #000;
+}
+
+#canvas-container {
+    margin: auto;
+    text-align: center;
+}
+
+#img-canvas {
+    margin: auto;
+    max-height: 50vh;
+    width: auto;
+    max-width: 100%;
+    background: gray;
+}
+
+
+
+
+
+#bottom-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    
+    .row {
+        margin: 0;
+    }
+
+    #options {
+        background: #000;
+    }
+
+    #option-menu {    
+        background: #ee6e73;
+
+        .row div {
+            height: 50px;
+            justify-content: center;
+        
+            &:hover {
+                background: #000;
+                cursor: pointer;
+            }
+        }
+        
+    }
+
+    #option-colors, #option-filters, #option-adjustments {
+        display: none;
+
+        &.show {
+            display: block;
+        }
+    }
+}
