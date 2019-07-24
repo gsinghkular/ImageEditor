@@ -101,6 +101,18 @@ document.getElementById("option-filters").addEventListener("click", (e) => {
                 this.nostalgia().render();
             });
             break;
+        case "greyscale":
+            reset();
+            Caman(canvas, function () {
+                this.greyscale().render();
+            });
+            break;
+        case "invert":
+            reset();
+            Caman(canvas, function () {
+                this.invert().render();
+            });
+            break;
     }
 });
 
