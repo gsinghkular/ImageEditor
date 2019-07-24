@@ -7,6 +7,7 @@ let fileName = '';
 const downloadBtn = document.getElementById("download-btn");
 const uploadImg = document.getElementById("upload-img");
 const resetBtn = document.getElementById("reset-btn");
+const animation = document.getElementById("processing");
 
 // Upload file
 uploadImg.addEventListener('change', e => {
@@ -76,6 +77,7 @@ saturationSlider.addEventListener("change", () => {
 
 // Filters
 document.getElementById("option-filters").addEventListener("click", (e) => {
+    toggleProcessing(true);
     switch (event.target.id) {
         case "vintage":
             reset();
@@ -114,6 +116,7 @@ document.getElementById("option-filters").addEventListener("click", (e) => {
             });
             break;
     }
+    toggleProcessing(false);
 });
 
 function reset() {
@@ -185,3 +188,19 @@ document.getElementById("download").addEventListener('click', () => {
     e = new MouseEvent('click');
     link.dispatchEvent(e);
 })
+
+function toggleProcessing(shouldShow) {
+    if(shouldShow)
+        animation.classList.add("show");
+    else 
+        animation.classList.remove("show");
+}
+
+Caman.Event.listen("processStart", function (job) {
+    toggleProcessing(true);
+ });
+  
+
+  Caman.Event.listen("processComplete", function (job) {
+    toggleProcessing(false);
+  });

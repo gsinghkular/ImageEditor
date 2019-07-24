@@ -8,6 +8,29 @@
     font-size: 1.2em;
 }
 
+#processing {
+    height: 100vh;
+    width: 100vw;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #00000061;
+    color: #fff;
+    display: none;
+
+    &.show {
+        display: block;
+    }
+
+    i {
+        position: absolute;
+        top: 50%;
+        font-size: 40px;
+        animation: spinning 0.8s infinite;
+    }
+}
+
 #download {
     padding: 20px 0;
     transition: 0.2s;
@@ -103,4 +126,10 @@
             display: block;
         }
     }
+}
+
+
+@keyframes spinning {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
