@@ -56,6 +56,16 @@
     max-width: 100%;
 }
 
+.expanding-border() {
+    position: absolute;
+    bottom: 0;
+    content: "";
+    transform: scaleX(0);
+    width: 100%;
+    display:block;
+    border-bottom: solid 3px #fff;
+    transition: 0.15s ease-in;   
+}
 
 .navbar {
     background: @primary-color;
@@ -64,6 +74,7 @@
 #bottom-container {
     position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
     text-align: center;
     color: @text-color;
@@ -79,22 +90,38 @@
             min-height: 50px;
             display: flex;
             flex-direction: column;
-            justify-content: center;            
-            box-shadow: @raised-shadow;
+            justify-content: center;
             transition: 0.1s;
+            position: relative;
+            padding: 0;
+
+            &:after {
+                .expanding-border();
+            }
 
             &:hover {
                 background: @hover-color;
                 cursor: pointer;
-                transform: scale(1.1);
+
+                &::after {
+                    transform: scaleX(1);
+                }
+               
             }
         }
 
         #option-colors .col {
             box-shadow: none;
+            padding: 0 0.75rem;
+
             &:hover {
                 background: @secondary-color;
                 cursor: default;
+                transform: none;
+                
+                &::after {
+                    transform: scaleX(0);
+                }               
             }
         }
     }
@@ -107,13 +134,24 @@
         .row .col {
             min-height: 50px;
             justify-content: center;
-            box-shadow: @raised-shadow;
             transition: 0.1s;
+            position: relative;
         
+            &:after {
+                .expanding-border();               
+            }
+
             &:hover {
                 background: @hover-color;
-                cursor: pointer;                
-                transform: scale(1.1);
+                cursor: pointer;
+
+                &::after {
+                    transform: scaleX(1);
+                }
+            }
+
+            &:hover::after {
+                transform: scaleX(1);
             }
         }
         
